@@ -74,19 +74,7 @@ void setup() { //----------------------------SETUP------------------------------
   sei();
 }
 
-//void proxiCheck() {
-//  if(analogRead(proxiPin)<=800) {
-//    lcd.setCursor(15,1);
-//    lcd.print(" ");
-//    lcd.setCursor(15,1);
-//    lcd.print("1");
-//  } else {
-//    lcd.setCursor(15,1);
-//    lcd.print(" ");
-//    lcd.setCursor(15,1);
-//    lcd.print("0");
-//  }
-//}
+
 
 void keyDetect() {
 //  Serial.println("HIT");
@@ -106,19 +94,7 @@ void motionDetect() {
   }
 }
 
-//void motionDetect() {
-//  lcd.home();
-//  lcd.print("       ");
-//  if (digitalRead(motionPin) == HIGH) {
-//    lcd.setCursor(0,0);
-//    lcd.print("MOVING");
-//    digitalWrite(motionLed, HIGH);
-//  } else {
-//    lcd.setCursor(0,0);
-//    lcd.print("STATIC");
-//    digitalWrite(motionLed, LOW);
-//  }
-//}
+
 
 void beep() {
   digitalWrite(buzzPin, HIGH);
@@ -216,6 +192,8 @@ ISR(TIMER1_COMPA_vect) {
 //  delay(2000);
 }
 
+
+
 void loop() { //----------------------------LOOP------------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -229,16 +207,13 @@ void otherStuffs() {
   delay(10);
   sensorValue = analogRead(tempSensorPin);
   sensorValue = sensorValue * 0.48828125;
-//  float mv = (sensorValue / 1024.0) * 5000;
-//  int cel = (int) mv / 10;
+
   int cel = sensorValue;
   delay(10);
   gasValue = analogRead(gasPin);
   delay(10);
   gasValue = analogRead(gasPin);  
-//  Serial.println(gasValue);
-//if (cel <= 50 && gasValue <= 750)
-//  {
+ {
   if(isMoving) {
     lcd.setCursor(0,0);
     lcd.print(" ");
@@ -277,17 +252,11 @@ void otherStuffs() {
     lcd.print(gasValue);
   }
 //    }
-//  //alarm
-// else
-//  {
-//    lcd.print("!!!WARNING!!!");
-//    doubleBeep();
-//    doubleBeep();
-//    //doubleBeep();
-//    //delay(5000);
-//  }
-//  delay(1000);
+
 }
+
+
+
 
 
 //http://www.instructables.com/answers/multiple-processes-in-arduino/
